@@ -1,0 +1,3 @@
+node_modules/
+dist/
+apps/web-app/vite.config.ts.timestamp-*
