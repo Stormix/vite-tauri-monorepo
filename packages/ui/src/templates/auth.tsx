@@ -1,7 +1,14 @@
-import { ReactNode } from 'react';
+import Providers from '@/providers'
+import { Outlet } from 'react-router-dom'
 
-const AuthLayout = ({ children }: { children: ReactNode }) => {
-  return <main className="container flex h-screen w-screen flex-col items-center justify-center">{children}</main>;
-};
+const AuthLayout = () => {
+  return (
+    <main className="container flex flex-col items-center justify-center w-screen h-screen">
+      <Providers>
+        <Outlet />
+      </Providers>
+    </main>
+  )
+}
 
-export default AuthLayout;
+export default AuthLayout

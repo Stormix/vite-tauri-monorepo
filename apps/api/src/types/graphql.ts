@@ -14,13 +14,14 @@ export interface User {
     name: string;
 }
 
-export interface IQuery {
-    users(): User[] | Promise<User[]>;
-}
-
 export interface IMutation {
     createUser(email: string, password: string, name: string): Nullable<User> | Promise<Nullable<User>>;
     login(email: string, password: string): Nullable<string> | Promise<Nullable<string>>;
+    logout(): Nullable<boolean> | Promise<Nullable<boolean>>;
+}
+
+export interface IQuery {
+    currentUser(): Nullable<User> | Promise<Nullable<User>>;
 }
 
 type Nullable<T> = T | null;

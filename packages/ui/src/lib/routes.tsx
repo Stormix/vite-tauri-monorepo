@@ -1,21 +1,20 @@
-import { ReactNode } from 'react';
-import Auth from '../pages/auth';
-import Home from '../pages/home';
+import Auth from '@/pages/auth'
+import AuthLayout from '@/templates/auth'
+import Layout from '@/templates/layout'
+import { RouteObject } from 'react-router-dom'
+import Home from '../pages/home'
 
-interface Route {
-  path: string;
-  element: ReactNode;
-}
-
-const routes: Route[] = [
+const routes: RouteObject[] = [
   {
     path: '/',
-    element: <Home />
+    element: <Layout />,
+    children: [{ path: '/', element: <Home /> }]
   },
   {
     path: '/auth',
-    element: <Auth />
+    element: <AuthLayout />,
+    children: [{ path: '/auth', element: <Auth /> }]
   }
-];
+]
 
-export default routes;
+export default routes

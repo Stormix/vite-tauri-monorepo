@@ -1,14 +1,23 @@
-import AuthForm from '../components/molecules/auth-form';
-import AuthLayout from '../templates/auth';
+import { useAuth } from '@/providers/auth-provider'
+import { useEffect } from 'react'
+import { useNavigate } from 'react-router-dom'
+import AuthForm from '../components/molecules/auth-form'
 
 const Auth = () => {
-  return (
-    <AuthLayout>
-      <div className="mx-auto flex w-full flex-col justify-center space-y-6">
-        <AuthForm />
-      </div>
-    </AuthLayout>
-  );
-};
+  const { user } = useAuth()
+  const navigate = useNavigate()
 
-export default Auth;
+  useEffect(() => {
+    if (user) {
+      navigate('/')
+    }
+  }, [user])
+
+  return (
+    <div className="flex flex-col justify-center w-full mx-auto space-y-6">
+      <AuthForm />
+    </div>
+  )
+}
+
+export default Auth

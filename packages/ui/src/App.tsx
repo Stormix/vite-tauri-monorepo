@@ -1,25 +1,12 @@
-import { Toaster } from '@/components/ui/toaster';
-import { ApolloClient, ApolloProvider, InMemoryCache } from '@apollo/client';
-import { RouterProvider, createBrowserRouter } from 'react-router-dom';
-import './assets/app.css';
-import routes from './lib/routes';
-import { ThemeProvider } from './providers/theme-provider';
+import { RouterProvider, createBrowserRouter } from 'react-router-dom'
+import './assets/app.css'
+import LoadingSpinner from './components/ui/loading-spinner'
+import routes from './lib/routes'
 
-const router = createBrowserRouter(routes);
-const client = new ApolloClient({
-  uri: 'http://localhost:3000/graphql',
-  cache: new InMemoryCache()
-});
+const router = createBrowserRouter(routes)
 
 const App = () => {
-  return (
-    <ApolloProvider client={client}>
-      <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
-        <Toaster />
-        <RouterProvider router={router} />
-      </ThemeProvider>
-    </ApolloProvider>
-  );
-};
+  return <RouterProvider router={router} fallbackElement={<LoadingSpinner />} />
+}
 
-export default App;
+export default App

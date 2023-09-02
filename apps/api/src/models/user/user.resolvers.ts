@@ -1,4 +1,4 @@
-import { Args, Mutation, Query, Resolver } from '@nestjs/graphql';
+import { Args, Mutation, Resolver } from '@nestjs/graphql';
 import bcryptjs from 'bcryptjs';
 import { User } from '../../types/graphql';
 import { UserService } from './user.service';
@@ -6,12 +6,6 @@ import { UserService } from './user.service';
 @Resolver('User')
 export class UserResolvers {
   constructor(private readonly userService: UserService) {}
-
-  @Query('users')
-  async users(): Promise<User[]> {
-    return this.userService.findAll({});
-  }
-
   @Mutation('createUser')
   async createUser(
     @Args('email') email: string,

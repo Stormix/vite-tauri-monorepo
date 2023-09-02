@@ -1,7 +1,25 @@
-import { ReactNode } from 'react';
+import Providers from '@/providers'
+import { useAuth } from '@/providers/auth-provider'
+import { useEffect } from 'react'
+import { Outlet, useNavigate } from 'react-router-dom'
 
-const Layout = ({ children }: { children: ReactNode }) => {
-  return <>{children}</>;
-};
+const Layout = () => {
+  const { user, loading } = useAuth()
+  const navigate = useNavigate()
 
-export default Layout;
+  useEffect(() => {
+    if (!user && loading) {
+      navigate('/auth')
+    }
+  }, [user])
+
+  return (
+    <Providers>
+      <main className="container flex flex-col items-center justify-center w-screen h-screen">
+        <Outlet />
+      </main>
+    </Providers>
+  )
+}
+
+export default Layout

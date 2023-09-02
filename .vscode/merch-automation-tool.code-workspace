@@ -1,14 +1,32 @@
 {
 	"folders": [
 		{
+			"name": "✨ root",
 			"path": ".."
+		},
+		{
+			"name": "📦 ui",
+			"path": "../packages/ui"
+		},
+		{
+			"name": "api",
+			"path": "../apps/api"
+		},
+		{
+			"name": "web",
+			"path": "../apps/web-app"
 		}
 	],
 	"settings": {
+		"files.exclude": {
+			"node_modules/": true,
+			"packages/": true
+		},
 		"editor.codeActionsOnSave": {
 			"source.fixAll.eslint": true,
 			"source.organizeImports": true,
 		},
+		"typescript.preferences.importModuleSpecifier": "shortest",
 		"typescript.tsdk": "node_modules\\typescript\\lib",
 		"search.exclude": {
 			"**/node_modules": true,

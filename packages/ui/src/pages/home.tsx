@@ -1,5 +1,16 @@
-const Home = () => {
-  return <h1>Home</h1>;
-};
+import { Button } from '@/components/ui/button'
+import { useAuth } from '@/providers/auth-provider'
 
-export default Home;
+const Home = () => {
+  const { logout, loading } = useAuth()
+  return (
+    <>
+      <h1>Home</h1>
+      <Button onClick={() => logout()} loading={loading}>
+        Log out
+      </Button>
+    </>
+  )
+}
+
+export default Home
